@@ -1,6 +1,9 @@
 <div class='account-page' id='account-page'>
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
+      <div class='top-contents'>
+        <%= link_to image_tag("top.png", class:"top-icon"), "/" %>
+      </div>
       <h2>Log in</h2>
       <h5>登録しているユーザーでログイン</h5>
       <%= render "devise/shared/links"%>
