@@ -24,8 +24,8 @@
 | type          | integer    | null: false                    |
 | price         | integer    | null: false                    |
 | size          | string     | null: false                    |
-| material      | string     |                                |
-| detail        | string     |                                |
+| material      | text       |                                |
+| detail        | text       |                                |
 | delivery_time | integer    | null: false                    |
 | user_id       | references | foreign_key: true, null: false |
 
@@ -55,11 +55,11 @@
 | -------------------- | ---------- | ------------------------------ |
 | order_id             | references | foreign_key: true, null: false |
 | user_id              | references | foreign_key: true, null: false |
-| price_ok             | boolean    | null: false                    |
-| size_ok              | boolean    | null: false                    |
-| material_ok          | boolean    | null: false                    |
-| detail_ok            | boolean    | null: false                    |
-| delivery_time_ok     | boolean    | null: false                    |
+| price_ok             | boolean    | default: false, null: false    |
+| size_ok              | boolean    | default: false, null: false    |
+| material_ok          | boolean    | default: false, null: false    |
+| detail_ok            | boolean    | default: false, null: false    |
+| delivery_time_ok     | boolean    | default: false, null: false    |
 | price_remark         | text       | null: false                    |
 | size_remark          | text       | null: false                    |
 | material_remark      | text       | null: false                    |
