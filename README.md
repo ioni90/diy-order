@@ -17,17 +17,17 @@
 
 ## orders テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| name          | string     | null: false                    |
-| story         | text       | null: false                    |
-| type          | integer    | null: false                    |
-| price         | integer    | null: false                    |
-| size          | string     | null: false                    |
-| material      | text       |                                |
-| detail        | text       |                                |
-| delivery_time | integer    | null: false                    |
-| user_id       | references | foreign_key: true, null: false |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| story            | text       | null: false                    |
+| type_id          | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| size             | string     | null: false                    |
+| material         | text       |                                |
+| detail           | text       |                                |
+| delivery_time_id | integer    | null: false                    |
+| user_id          | references | foreign_key: true, null: false |
 
 ### Association
 
