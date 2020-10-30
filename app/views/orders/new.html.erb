@@ -1,0 +1,77 @@
+<div class="order-contents">
+  <header class="order-header">
+    <%= image_tag('crop2.png', class:'grain-pattern') %>
+      <div class="top-content">
+        <%= link_to image_tag("top.png"), "/" %>
+      </div>
+  </header>
+  <div class="orders-main">
+    <h2>オーダー家具の情報を入力</h2>
+    <%= form_with(model: @order, local: true) do |f| %>
+
+    <%# <%= render partial: 'shared/error_messages', locals: { model: f.object } %>
+
+    <div>
+      <div class="weight-bold-text">
+        家具アイコン
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="choose-icon">
+        <p>
+          クリックして家具のタイプ選択
+        </p>
+        <%= f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box", id:"icon-type"}) %>
+      </div>
+    </div>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        家具の名前
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :name, class:"order-short", placeholder:"(20文字まで) 例)ハイテーブル", maxlength:"20" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          家具の発注目的
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :story, class:"order-long", placeholder:"(500文字まで）例）赤ちゃんが大きくなり普通のテーブル高さですと物を落としてしまいます。室内で使用する手の届かないくらいのハイテーブルがほしいと思いました。" ,rows:"4" ,maxlength:"500" %>
+      </div>
+      <div class="weight-bold-text">
+        家具のサイズ
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :size, class:"order-medium", placeholder:"（200文字まで) 例)カウンターテーブルと合わせたいので、おおよそ高さ100x幅180x奥行き50cmでお願いします。幅はぴったりの寸法がいいです。", rows:"3",maxlength:"200" %>
+      <div class="weight-bold-text">
+        家具の材質
+        <span class="optional">任意</span>
+      </div>
+      <%= f.text_area :material, class:"order-medium", placeholder:"(200文字まで) 例)テーブル自体は木製であれば種類は気にしません。表面はアメ色のペンキを塗ってほしいです", rows:"3",maxlength:"200" %>
+      <div class="weight-bold-text">
+        家具のその他希望
+        <span class="optional">任意</span>
+      </div>
+      <%= f.text_area :detail, class:"order-long", placeholder:"(500文字まで) 例)階段から搬入して２階で使おうと思っています。天板と脚部分は分離した状態で送ってきてほしいです。天板と脚をビスで止めれば組み立てられるようにしてください。", rows:"3",maxlength:"500" %>
+    </div>
+    <div class="items-detail">
+        <div class="weight-bold-text">
+          制作希望日数
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:delivery_time_id, DeliveryTime.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+      </div>
+    </div>
+        <div class="price-content">
+          <div class="price-text">
+            <span>支払い価格</span>
+            <span class="indispensable">必須</span>
+          </div>
+          <span>¥</span>
+          <%= f.text_field :price, class:"price-input", placeholder:"例）20,000" %>
+        </div>
+    <div class="order-btn-contents">
+      <%= f.submit "オーダー" ,class:"order-btn" %>
+      <%=link_to 'Topへ', root_path, class:"back-btn" %>
+    </div>
+  </div>
+  <% end %>
+</div>
