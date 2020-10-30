@@ -1,11 +1,38 @@
+<%= image_tag('crop2.png', class:'grain-pattern') %>
 <%= render "shared/header" %>
 
 <div class="wrapper">
-  <div>依頼者側
-    <%= link_to image_tag("waterfall.png", class:"waterfall-icon"), "/" %>
+  <div>
+    <%= link_to(new_order_path, class:'remove-under-line') do %>
+      <div class="order-side">
+        <div class="order-desc">家具へこだわりがある人に</div>
+      </div>
+    <% end %>
   </div>
-  <div>DIY側
-    <%= link_to image_tag("cat.png", class:"cat-icon"), "/" %>
+  <div>
+    <%= link_to(root_path, class:'remove-under-line') do %>
+      <div class="diy-side">
+        <div class=diy-desc>家具にあなたのこだわりがあってもいい</div>
+      </div>
+    <% end %>
   </div>
 </div>
-<div></div>
+<%# オーダー一覧表示部分 %>
+<div>
+  <h2 class="furniture-index-list">DIYできる家具一覧</h2>
+  <ul class='orders-list'>
+    <% @orders.each do |order| %>
+      <li class='order-alone'>
+        <%= link_to "#", class:"remove-underline" do %>
+          <div>
+            <%= image_tag "#{order.type_id}.png", class:"icon-size" %>
+          </div>
+          <div class="individual-name">
+            <%= order.name %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
