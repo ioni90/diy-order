@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_order, only: [:show]
 
   def index
     @orders = Order.all
@@ -20,6 +21,9 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def order_params
@@ -27,6 +31,10 @@ class OrdersController < ApplicationController
                                   :type_id, :price, 
                                   :size, :material, :detail, 
                                   :delivery_time_id).merge(user_id: current_user.id)
+  end
+
+  def set_order
+    @order = Order.find(params[:id])
   end
 
 end
