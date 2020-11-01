@@ -23,7 +23,7 @@
   <ul class='orders-list'>
     <% @orders.each do |order| %>
       <li class='order-alone'>
-        <%= link_to "#", class:"remove-underline" do %>
+        <%= link_to order_path(order.id), class:"remove-underline" do %>
           <div>
             <%= image_tag "#{order.type_id}.png", class:"icon-size" %>
           </div>

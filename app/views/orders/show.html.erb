@@ -1,0 +1,61 @@
+<%= render "shared/header" %>
+
+<%# オーダーの概要 %>
+<div>
+  <div class="order-screen">
+    <h2 class="icon--name">
+      <%= @order.name %>
+    </h2>
+
+    <table>
+      <tbody>
+        <tr>
+          <th class="title-box">ジャンル</th>
+          <td class="content-box"><%= image_tag "#{@order.type_id}.png", :size => '40x40' %></td>
+        </tr>
+        <tr>
+          <th class="title-box">発注経緯</th>
+          <td class="content-box"><%= @order.story %></td>
+        </tr>
+        <tr>
+          <th class="title-box">DIYクライアント</th>
+          <td class="content-box"><%= @order.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="title-box">タイプ</th>
+          <td class="content-box"><%= @order.type.name %></td>
+        </tr>
+        <tr>
+          <th class="title-box">サイズ</th>
+          <td class="content-box"><%= @order.size %></td>
+        </tr>
+        <tr>
+          <th class="title-box">材質・塗装</th>
+          <td class="content-box"><%= @order.material %></td>
+        </tr>
+        <tr>
+          <th class="title-box">詳細</th>
+          <td class="content-box"><%= @order.detail %></td>
+        </tr>
+        <tr>
+          <th class="title-box">希望制作びの目安</th>
+          <td class="content-box"><%= @order.delivery_time.name %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="order--price">
+      <span>
+        <%= @order.price.to_s(:delimited) %>円
+      </span>
+    </div>
+
+    <% unless user_signed_in? && current_user.id == @order.user_id %>
+      <%# <% unless @order.closure %>
+        <%= link_to '入札画面に進む', order_purchases_path(@order.id) %>
+      <%# <% end %>
+    <% end %>
+
+  
+  </div>
+</div>
