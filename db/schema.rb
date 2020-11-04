@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_25_062254) do
+ActiveRecord::Schema.define(version: 2020_11_03_051216) do
+
+  create_table "bids", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "price_ok", default: false, null: false
+    t.boolean "size_ok", default: false, null: false
+    t.boolean "material_ok", default: false, null: false
+    t.boolean "detail_ok", default: false, null: false
+    t.boolean "delivery_ok", default: false, null: false
+    t.text "price_remark", null: false
+    t.text "size_remark", null: false
+    t.text "material_remark", null: false
+    t.text "detail_remark", null: false
+    t.text "delivery_time_remark", null: false
+    t.text "message", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "offer_price"
+    t.index ["order_id"], name: "index_bids_on_order_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
+  end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,5 +61,7 @@ ActiveRecord::Schema.define(version: 2020_10_25_062254) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bids", "orders"
+  add_foreign_key "bids", "users"
   add_foreign_key "orders", "users"
 end

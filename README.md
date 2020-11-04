@@ -66,6 +66,7 @@
 | detail_remark        | text       | null: false                    |
 | delivery_time_remark | text       | null: false                    |
 | message              | text       | null: false                    |
+| offer_price          | integer    |                                |
 
 ### Association
 
