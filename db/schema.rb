@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_051216) do
+ActiveRecord::Schema.define(version: 2020_11_04_024109) do
 
   create_table "bids", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "order_id", null: false
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2020_11_03_051216) do
     t.integer "offer_price"
     t.index ["order_id"], name: "index_bids_on_order_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
+  create_table "closures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "bid_id", null: false
+    t.text "reply", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bid_id"], name: "index_closures_on_bid_id"
+    t.index ["order_id"], name: "index_closures_on_order_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -63,5 +73,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_051216) do
 
   add_foreign_key "bids", "orders"
   add_foreign_key "bids", "users"
+  add_foreign_key "closures", "bids"
+  add_foreign_key "closures", "orders"
   add_foreign_key "orders", "users"
 end
