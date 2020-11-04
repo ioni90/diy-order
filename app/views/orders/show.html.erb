@@ -51,9 +51,9 @@
     </div>
 
     <% unless user_signed_in? && current_user.id == @order.user_id %>
-      <%# <% unless @order.closure %>
-        <%= link_to '入札画面に進む', order_purchases_path(@order.id) %>
-      <%# <% end %>
+      <% unless user_signed_in? && @order.bids.exists?(user_id: current_user.id) %>
+        <%= link_to '入札画面に進む', new_order_bid_path(@order.id), class:"bid-btn" %>
+      <% end %>
     <% end %>
 
   
