@@ -1,0 +1,102 @@
+
+
+/* ボタンの動き */
+.checkbox-position {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.suggestion {
+  width: 100%;
+  height: 100px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 30px;
+}
+
+.offer-price-input {
+  width: 50%;
+  margin: 10px 0;
+}
+
+.message-area {
+  margin: 100px 0 0 0;
+}
+
+.message-box {
+  width: 100%;
+  height: 100px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+}
+
+.gap {
+  margin-top: 20px;
+}
+
+.bid-btn-contents {
+  margin: 30px 0 5% 5%;
+}
+
+.remove-input-mark {
+  position: absolute;
+  left: -9999px;
+}
+
+label {
+  display: block;
+  position: relative;
+  margin: 20px;
+  padding: 15px 30px 15px 62px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  color: #fff;
+  background-color: #9fb1bd;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+label::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  width: 32px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+}
+
+label:first-of-type {
+  transform: translateX(-40px);
+}
+
+label:last-of-type {
+  transform: translateX(40px);
+}
+
+label:hover, input:focus + label {
+  box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+}
+
+input:checked + label {
+  background-color: #17a951;
+}
+
+input:checked + label::before {
+  background-color: #fff;
+}
+
+.bid-btn {
+  background: #d8827d;
+  border: 1px solid #e08681;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  font-size: 14px;
+  margin-bottom: 4vh;
+}

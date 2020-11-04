@@ -74,8 +74,20 @@
 
 .order-btn-contents {
   margin: 30px 0 5% 5%;
+  width: 100%;
+  text-align: center;
 }
 
 .top-content {
   margin-left: 5%;
+}
+
+.order-btn {
+  background: #d8827d;
+  border: 1px solid #e08681;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  font-size: 14px;
+  margin-bottom: 4vh;
 }

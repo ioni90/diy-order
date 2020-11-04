@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   belongs_to_active_hash :type
   belongs_to_active_hash :delivery_time
   belongs_to :user
+  has_many :bids
 
   with_options presence: true do
     validates :name

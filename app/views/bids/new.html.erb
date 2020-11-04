@@ -1,0 +1,149 @@
+<%= image_tag('crop2.png', class:'grain-pattern') %>
+<%= render "shared/header" %>
+
+
+<div class="order-screen">
+  <h2 class="icon--name">
+    <%= @order.name %>
+  </h2>
+  
+
+　<div class="orders-main">
+  <h2>自分でDIYできる条件を入力</h2>
+  <%= form_with model: @bid, url: order_bids_path, local: true do |f| %>
+  <div>
+    <table width="100%" height="300">
+      <tbody>
+        <tr>
+          <th class="title-box">ジャンル</th>
+          <td class="content-box"><%= image_tag "#{@order.type_id}.png", :size => '40x40' %></td>
+        </tr>
+        <tr>
+          <th class="title-box">DIYクライアント</th>
+          <td class="content-box"><%= @order.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="title-box">発注経緯</th>
+          <td class="content-box"><%= @order.story %></td>
+        </tr>
+        <tr>
+          <th class="title-box">タイプ</th>
+          <td class="content-box"><%= @order.type.name %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">サイズ</th>
+          <td class="content-box"><%= @order.size %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+          <%= f.radio_button :size_ok, :true, checked: true, class:"remove-input-mark" %>
+          <%= f.label :size_ok_true, "承知しました！" %>
+          
+          <%= f.radio_button :size_ok, :false, class:"remove-input-mark" %>
+          <%= f.label :size_ok_false, "ご提案があります！" %>
+        </div>
+        <div class="suggestion">
+          <%= f.text_area :size_remark, class:"suggestion", placeholder:"(100文字まで) 例)テーブルの天板をカットせずにそのままのサイズを使用すれば希望価格に近い金額になるかと思います。", maxlength:"100" %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">材質・塗装</th>
+          <td class="content-box"><%= @order.material %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+          <%= f.radio_button :material_ok, :true, checked: true, class:"remove-input-mark" %>
+          <%= f.label :material_ok_true, "承知しました！" %>
+          
+          <%= f.radio_button :material_ok, :false, class:"remove-input-mark" %>
+          <%= f.label :material_ok_false, "ご提案があります！" %>
+        </div>
+        <div class="suggestion">
+          <%= f.text_area :material_remark, class:"suggestion", placeholder:"(100文字まで) 例)天板は鉄、その他はパイン材を使用します。", maxlength:"100" %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">詳細</th>
+          <td class="content-box"><%= @order.detail %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+          <%= f.radio_button :detail_ok, :true, checked: true, class:"remove-input-mark" %>
+          <%= f.label :detail_ok_true, "承知しました！" %>
+          
+          <%= f.radio_button :detail_ok, :false, class:"remove-input-mark" %>
+          <%= f.label :detail_ok_false, "ご提案があります！" %>
+        </div>
+        <div class="suggestion">
+          <%= f.text_area :detail_remark, class:"suggestion", placeholder:"(100文字まで) 例)詳細承知しました！細かいところこちらでいい感じに進めます。", maxlength:"100" %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">希望制作びの目安</th>
+          <td class="content-box"><%= @order.delivery_time.name %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+          <%= f.radio_button :delivery_ok, :true, checked: true, class:"remove-input-mark" %>
+          <%= f.label :delivery_ok_true, "承知しました！" %>
+          
+          <%= f.radio_button :delivery_ok, :false, class:"remove-input-mark" %>
+          <%= f.label :delivery_ok_false, "ご提案があります！" %>
+        </div>
+        <div class="suggestion">
+          <%= f.text_area :delivery_time_remark, class:"suggestion", placeholder:"(100文字まで) 例)制作までに3週間程度いただければと思います。", maxlength:"100" %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">希望制作価格（送料込み）</th>
+          <td class="content-box"><%= @order.price.to_s(:delimited) %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+          <%= f.radio_button :price_ok, :true, checked: true, class:"remove-input-mark" %>
+          <%= f.label :price_ok_true, "承知しました！" %>
+          
+          <%= f.radio_button :price_ok, :false , class:"remove-input-mark" %>
+          <%= f.label :price_ok_false, "ご提案があります！" %>
+        </div>
+        <div class="suggestion">
+          <span class="optional">任意</span>
+          オファー価格：<br>
+          <%= f.text_field :offer_price, class:"offer-price-input", placeholder:"例）15,000" %> 円
+          <%= f.text_area :price_remark, class:"suggestion", placeholder:"(100文字まで) 例)材料費だけで1万円近くになってしまいますので、上記の価格でいかがでしょうか？", maxlength:"100" %>
+        </div>
+      </div>
+      <div class="message-area">クライアント様へメッセージ
+        <%= f.text_area :message, class:"message-box", placeholder:"(100文字まで) 例)頑張りますので承諾いただけると嬉しいです。", maxlength:"100" %>
+      </div>
+      
+      <div>
+        <%= f.submit "上記の条件で入札します", class:"bid-btn" %>
+      </div>
+  </div>
+  <% end %>
+  </div>
+</div>
