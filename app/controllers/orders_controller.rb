@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @bids = Bid.all
+    @closures = Closure.all
   end
 
   def new
@@ -21,6 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @closures = Closure.all
   end
 
   private

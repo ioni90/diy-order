@@ -1,18 +1,51 @@
 <%= image_tag('crop2.png', class:'grain-pattern') %>
-<%= render "shared/header" %>
+<header class='top-page-header'>
+  <div class='top-contents'>
+    <%= link_to image_tag("top.png", class:"top-icon"), "/" %>
+  </div>
+  <div class="top-header-position">
+    <ul class='lists'>
+      <%# ログインの有無で表示が分岐%>
+      <% if user_signed_in? %>
+        <li><%= link_to "#{current_user.nickname} さんのマイページ", '#', class: "user-nickname" %></li>
+        <li><%= link_to "注文履歴", '#', class: "user-nickname" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+
+  <% if user_signed_in? %>
+    <ul>
+      <% @bids.each do |bid|%>
+        <% if current_user.id == bid.order.user_id %>
+          <% unless @closures.exists?(order_id: bid.order_id)%>
+          <li>
+            <%= link_to image_tag("19.png", width: '30'), order_bid_path(bid.order_id, bid.id)%>
+            <%= bid.user.nickname %>
+          </li>
+          <% else %>
+            <div>
+              <%= "' #{bid.order.name} 'はクローズされました" %>
+            </div>
+          <% end %>
+        <% elsif @closures.exists?(bid_id: bid.id) && current_user.id == bid.user_id %>
+          <div>
+            <%= link_to "あなたの入札で'#{bid.order.name}'がクローズされました！詳細を確認してみましょう！", order_closure_path(bid.order_id, bid.id) %>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  </div>
+</header>
 
 <div class="wrapper">
   <div>
     <%= link_to(new_order_path, class:'remove-under-line') do %>
       <div class="order-side">
-        <div class="order-desc">家具へこだわりがある人に</div>
-      </div>
-    <% end %>
-  </div>
-  <div>
-    <%= link_to(root_path, class:'remove-under-line') do %>
-      <div class="diy-side">
-        <div class=diy-desc>家具にあなたのこだわりがあってもいい</div>
+        <div class="order-desc">家具制作依頼</div>
       </div>
     <% end %>
   </div>
@@ -24,8 +57,15 @@
     <% @orders.each do |order| %>
       <li class='order-alone'>
         <%= link_to order_path(order.id), class:"remove-underline" do %>
-          <div>
+          <div class="image-content">
             <%= image_tag "#{order.type_id}.png", class:"icon-size" %>
+
+            <% if @closures.exists?(order_id: order.id) %>
+              <div class='closed'>
+                <span>Colsed</span>
+              </div>
+            <% end %>   
+
           </div>
           <div class="individual-name">
             <%= order.name %>

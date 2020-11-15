@@ -32,3 +32,13 @@
   font-weight: bold;
   font-size: 25px;
 }
+
+.bid-already {
+  width: 10%;
+  color: #fff;
+  background-color: rgb(204, 158, 158);
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+}

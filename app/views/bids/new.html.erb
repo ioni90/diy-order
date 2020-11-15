@@ -1,13 +1,11 @@
 <%= image_tag('crop2.png', class:'grain-pattern') %>
 <%= render "shared/header" %>
 
-
 <div class="order-screen">
   <h2 class="icon--name">
     <%= @order.name %>
   </h2>
   
-
 　<div class="orders-main">
   <h2>自分でDIYできる条件を入力</h2>
   <%= form_with model: @bid, url: order_bids_path, local: true do |f| %>
@@ -44,10 +42,10 @@
       <div>
         <div class="checkbox-position">
           <%= f.radio_button :size_ok, :true, checked: true, class:"remove-input-mark" %>
-          <%= f.label :size_ok_true, "承知しました！" %>
+          <%= f.label :size_ok_true, "承知しました！", class:"label-motion" %>
           
           <%= f.radio_button :size_ok, :false, class:"remove-input-mark" %>
-          <%= f.label :size_ok_false, "ご提案があります！" %>
+          <%= f.label :size_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
         <div class="suggestion">
           <%= f.text_area :size_remark, class:"suggestion", placeholder:"(100文字まで) 例)テーブルの天板をカットせずにそのままのサイズを使用すれば希望価格に近い金額になるかと思います。", maxlength:"100" %>
@@ -64,10 +62,10 @@
       <div>
         <div class="checkbox-position">
           <%= f.radio_button :material_ok, :true, checked: true, class:"remove-input-mark" %>
-          <%= f.label :material_ok_true, "承知しました！" %>
+          <%= f.label :material_ok_true, "承知しました！", class:"label-motion" %>
           
           <%= f.radio_button :material_ok, :false, class:"remove-input-mark" %>
-          <%= f.label :material_ok_false, "ご提案があります！" %>
+          <%= f.label :material_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
         <div class="suggestion">
           <%= f.text_area :material_remark, class:"suggestion", placeholder:"(100文字まで) 例)天板は鉄、その他はパイン材を使用します。", maxlength:"100" %>
@@ -84,10 +82,10 @@
       <div>
         <div class="checkbox-position">
           <%= f.radio_button :detail_ok, :true, checked: true, class:"remove-input-mark" %>
-          <%= f.label :detail_ok_true, "承知しました！" %>
+          <%= f.label :detail_ok_true, "承知しました！", class:"label-motion" %>
           
           <%= f.radio_button :detail_ok, :false, class:"remove-input-mark" %>
-          <%= f.label :detail_ok_false, "ご提案があります！" %>
+          <%= f.label :detail_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
         <div class="suggestion">
           <%= f.text_area :detail_remark, class:"suggestion", placeholder:"(100文字まで) 例)詳細承知しました！細かいところこちらでいい感じに進めます。", maxlength:"100" %>
@@ -104,10 +102,10 @@
       <div>
         <div class="checkbox-position">
           <%= f.radio_button :delivery_ok, :true, checked: true, class:"remove-input-mark" %>
-          <%= f.label :delivery_ok_true, "承知しました！" %>
+          <%= f.label :delivery_ok_true, "承知しました！", class:"label-motion" %>
           
           <%= f.radio_button :delivery_ok, :false, class:"remove-input-mark" %>
-          <%= f.label :delivery_ok_false, "ご提案があります！" %>
+          <%= f.label :delivery_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
         <div class="suggestion">
           <%= f.text_area :delivery_time_remark, class:"suggestion", placeholder:"(100文字まで) 例)制作までに3週間程度いただければと思います。", maxlength:"100" %>
@@ -124,10 +122,10 @@
       <div>
         <div class="checkbox-position">
           <%= f.radio_button :price_ok, :true, checked: true, class:"remove-input-mark" %>
-          <%= f.label :price_ok_true, "承知しました！" %>
+          <%= f.label :price_ok_true, "承知しました！", class:"label-motion" %>
           
           <%= f.radio_button :price_ok, :false , class:"remove-input-mark" %>
-          <%= f.label :price_ok_false, "ご提案があります！" %>
+          <%= f.label :price_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
         <div class="suggestion">
           <span class="optional">任意</span>

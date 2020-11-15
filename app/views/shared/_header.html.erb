@@ -2,6 +2,7 @@
   <div class='top-contents'>
     <%= link_to image_tag("top.png", class:"top-icon"), "/" %>
   </div>
+  <div class="top-header-position">
     <ul class='lists'>
       <%# ログインの有無で表示が分岐%>
       <% if user_signed_in? %>
