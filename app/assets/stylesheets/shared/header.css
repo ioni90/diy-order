@@ -5,6 +5,13 @@
   flex-direction: column;
 }
 
+.top-header-position {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+  padding-left: 20px;
+}
+
 .top-icon {
   width: 15vw;
   margin-right: 10vw;

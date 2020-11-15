@@ -1,0 +1,160 @@
+<%= image_tag('crop2.png', class:'grain-pattern') %>
+<%= render "shared/header" %>
+
+<div>
+  <%= "#{@order.name}は以下の条件で入札されています" %>
+      <div>依頼者さんからのメッセージ<br>
+        <%= @closure.reply %>
+      </div>
+</div>
+
+<div class="order-screen">
+  <h2 class="icon--name">
+    <%= @order.name %>
+  </h2>
+
+
+　<div class="orders-main">
+    <table width="100%" height="300">
+      <tbody>
+        <tr>
+          <th class="title-box">ジャンル</th>
+          <td class="content-box"><%= image_tag "#{@order.type_id}.png", :size => '40x40' %></td>
+        </tr>
+        <tr>
+          <th class="title-box">DIYクライアント</th>
+          <td class="content-box"><%= @order.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="title-box">発注経緯</th>
+          <td class="content-box"><%= @order.story %></td>
+        </tr>
+        <tr>
+          <th class="title-box">タイプ</th>
+          <td class="content-box"><%= @order.type.name %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">サイズ</th>
+          <td class="content-box"><%= @order.size %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+        <% if @bid.size_ok == true %>
+          <div class="label-motion checked">承知しました！</div>
+          <div class="label-motion">ご提案します！</div>
+        <% else %>
+          <div class="label-motion">承知しました！</div>
+          <div class="label-motion checked">ご提案します！</div>
+        <% end %>
+        </div>
+        <div class="reply-from-diyer">
+          <%= @bid.size_remark %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">材質・塗装</th>
+          <td class="content-box"><%= @order.material %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+        <% if @bid.material_ok == true %>
+          <div class="label-motion checked">承知しました！</div>
+          <div class="label-motion">ご提案します！</div>
+        <% else %>
+          <div class="label-motion">承知しました！</div>
+          <div class="label-motion checked">ご提案します！</div>
+        <% end %>
+        </div>
+        <div class="reply-from-diyer">
+          <%= @bid.material_remark %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">詳細</th>
+          <td class="content-box"><%= @order.detail %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+        <% if @bid.detail_ok == true %>
+          <div class="label-motion checked">承知しました！</div>
+          <div class="label-motion">ご提案します！</div>
+        <% else %>
+          <div class="label-motion">承知しました！</div>
+          <div class="label-motion checked">ご提案します！</div>
+        <% end %>
+        </div>
+        <div class="reply-from-diyer">
+          <%= @bid.detail_remark %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">希望制作びの目安</th>
+          <td class="content-box"><%= @order.delivery_time.name %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+        <% if @bid.delivery_ok == true %>
+          <div class="label-motion checked">承知しました！</div>
+          <div class="label-motion">ご提案します！</div>
+        <% else %>
+          <div class="label-motion">承知しました！</div>
+          <div class="label-motion checked">ご提案します！</div>
+        <% end %>
+        </div>
+        <div class="reply-from-diyer">
+          <%= @bid.delivery_time_remark %>
+        </div>
+      </div>
+    <table width="100%" height="100" class="gap">
+      <tbody>
+        <tr>
+          <th class="title-box">希望制作価格（送料込み）</th>
+          <td class="content-box"><%= @order.price.to_s(:delimited) %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div>
+        <div class="checkbox-position">
+        <% if @bid.price_ok == true %>
+          <div class="label-motion checked">承知しました！</div>
+          <div class="label-motion">ご提案します！</div>
+        <% else %>
+          <div class="label-motion">承知しました！</div>
+          <div class="label-motion checked">ご提案します！</div>
+        <% end %>
+        </div>
+        <div>
+          オファー価格：<br>
+          <div class="offer-price-display">
+            <%= @bid.offer_price.to_s(:delimited) %> 円
+          </div>
+          <div class="reply-from-diyer">
+            <%= @bid.price_remark %>
+          </div>
+        </div>
+      </div>
+      <div class="message-title"><span class="message-title2">依頼者さんに送ったメッセージ</span></div>
+      <div class="message-from-diyer">
+        <%= @bid.message %>
+      </div>
+  </div>
+</div>

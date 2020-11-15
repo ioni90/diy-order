@@ -1,5 +1,9 @@
 .wrapper {
   display: flex;
+  background-image: url("hands.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
 }
 
 .orders-list {
@@ -11,6 +15,13 @@
   font-size: 25px;
   margin: 10px 0 5px 15px;
   font-weight: bold;
+  width: 15%;
+  color: #fff;
+  background-color: rgb(242, 155, 155);
+  border: 1px solid #dedede;
+  font-size: 17px;
+  text-align: center;
+  padding: 10px;
 }
 
 .remove-underline {
@@ -38,10 +49,6 @@
 .order-side {
   height: 600px;
   width: 50vw;
-  background-image: url("autumn.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
   padding: 5vh 3vw;
   color: rgb(252, 236, 213);
   text-shadow: 0 0 10px rgba(122, 86, 8, 0.9);
@@ -70,10 +77,6 @@
 .diy-side {
   height: 600px;
   width: 50vw;
-  background-image: url("diy.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
 
   padding: 5vh 5vw;
   color: rgb(252, 236, 213);
@@ -111,4 +114,23 @@
 
 .grain-pattern {
   width: 100vw;
+}
+
+.image-content {
+  position: relative;
+}
+
+.closed {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  background-color: crimson;
+  transform: skewY(-10deg);
+}
+
+.closed>span {
+  color: #FFF;
+  font-size: 45px;
+  font: bold;
 }
