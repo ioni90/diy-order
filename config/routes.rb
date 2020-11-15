@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'orders#index'
   resources :orders do
     resources :bids
+    resource :closure
   end
 
 end

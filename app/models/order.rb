@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   belongs_to_active_hash :delivery_time
   belongs_to :user
   has_many :bids
+  has_one :closure
 
   with_options presence: true do
     validates :name
