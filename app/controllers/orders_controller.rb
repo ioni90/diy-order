@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_order, only: [:show]
+  before_action :set_order, only: [:show, :edit]
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order(id: "DESC")
     @bids = Bid.all
     @closures = Closure.all
   end
@@ -24,6 +24,27 @@ class OrdersController < ApplicationController
 
   def show
     @closures = Closure.all
+  end
+
+  def edit
+  end
+
+  def update
+    order = Order.find(params[:id])
+    if order.update(order_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    order = Order.find(params[:id])
+    if order.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
