@@ -42,3 +42,39 @@
   text-align: center;
   padding: 10px;
 }
+
+.edit-destroy-btn-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit-destroy-btn {
+  margin: 50px 0;
+  height: 30px;
+  width: 200px;
+  padding: 0 30px;
+}
+
+.order-pink-btn {
+  text-decoration: none;
+  text-align: center;
+  background-color: #e7625b;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFF;
+  margin: 20px 0px;
+  padding: 2vh 1vw;
+}
+
+.order-destroy {
+  text-decoration: none;
+  background-color: rgb(206, 207, 201);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(94, 91, 91);
+  margin: 20px 0px;
+  padding: 2vh 50px;
+}

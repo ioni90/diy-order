@@ -51,7 +51,12 @@
     </div>
 
     <% unless @closures.exists?(order_id: @order.id) %>
-      <% unless user_signed_in? && current_user.id == @order.user_id %>
+      <% if user_signed_in? && current_user.id == @order.user_id %>
+      <div class="edit-destroy-btn-wrapper">
+        <div class="edit-destroy-btn"><%= link_to 'オーダーの編集', edit_order_path(@order.id), method: :get,id:"confirm-destroy", class: "order-pink-btn" %></div>
+        <div class="edit-destroy-btn"><%= link_to '削除', order_path(@order.id), method: :delete, class:'order-destroy', data: { confirm: '削除してもよろしいですか？' } %></div>
+      </div>
+      <% else %>
         <% unless user_signed_in? && @order.bids.exists?(user_id: current_user.id) %>
           
           <%= link_to '入札画面に進む', new_order_bid_path(@order.id), class:"bid-btn" %>
@@ -60,7 +65,7 @@
           <div><span class="bid-already">あなたはこの家具をすでに入札しています</span></div>
         <% end %>
       <% end %>
-     <% else %>
+    <% else %>
             <div><span class="bid-already">この家具はすでに入札されています</span></div>
     <% end %>
   
