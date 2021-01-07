@@ -1,9 +1,64 @@
 <%= image_tag('crop2.png', class:'grain-pattern') %>
 <%= render "shared/header" %>
 
+<div class="visibiliry-hidden", id="hidden-time"><%= @closure.created_at %></div>
+<div class="visibiliry-hidden", id="hidden-id"><%= @order.delivery_time.id %></div>
+<div class="count-box">
+  <p>家具制作終了日までの目安：</p>
+  <div class="count-result", id="result"></div>
+</div>
+<script>
+  var hiddenTime = document.getElementById('hidden-time');
+  var startTime = new Date(hiddenTime.textContent);
+
+  var hiddenId = document.getElementById('hidden-id');
+  var Id = hiddenId.textContent;
+
+  if(Id == 2){
+    startTime.setDate(startTime.getDate() + 3);
+  } else if(Id = 3){
+    startTime.setDate(startTime.getDate() + 7);
+  } else if(Id = 4){
+    startTime.setDate(startTime.getDate() + 14);
+  } else if(Id = 5){
+    startTime.setMonth(startTime.getMonth() + 1);
+  } else if(Id = 6){
+    startTime.setDate(startTime.getDate() + 45);
+  } else{
+    startTime.setMonth(startTime.getMonth() + 2);
+  }
+
+  // 1秒おきにカウントダウン
+  var id = setInterval(function(){
+    var nowTime = new Date();
+    var period = startTime - nowTime
+    period--;
+    
+    if(period >= 0){
+      var day = Math.floor(period / (1000 * 60 * 60 * 24));
+      period -=  (day　*(1000 * 60 * 60 * 24));
+      var hour = Math.floor(period / (1000 * 60 * 60));
+      period -= (hour *(1000 * 60 * 60));
+      var minutes =  Math.floor(period / (1000 * 60));
+      period -= (minutes * (1000 * 60));
+      var second = Math.floor(period / 1000);
+      var insert = "";
+      insert += '<span class="h">' + day +'日' + '</span>';
+      insert += '<span class="h">' + hour + '時'+'</span>';
+      insert += '<span class="m">' + minutes +'分' + '</span>';
+      insert += '<span class="s">' + second + '秒'+ '</span>';
+      document.getElementById('result').innerHTML = insert;
+    } else{
+      clearInterval(id);
+      insert = "制作期間終了です！"
+      document.getElementById('result').innerHTML = insert;
+    }
+  }, 1000);
+</script>
+
 <div>
-  <%= "#{@order.name}は以下の条件で入札されています" %>
-      <div>依頼者さんからのメッセージ<br>
+  <div class="closed-text"><%= "#{@order.name}は以下の条件で入札されています" %></div>
+      <div class="closed-contents"><依頼者さんからのメッセージ><br>
         <%= @closure.reply %>
       </div>
 </div>
@@ -145,7 +200,11 @@
         <div>
           オファー価格：<br>
           <div class="offer-price-display">
+          <% if @bid.offer_price %>
             <%= @bid.offer_price.to_s(:delimited) %> 円
+          <% else %>
+            無し
+          <% end %>
           </div>
           <div class="reply-from-diyer">
             <%= @bid.price_remark %>
@@ -158,3 +217,5 @@
       </div>
   </div>
 </div>
+
+<%= render "shared/footer" %>

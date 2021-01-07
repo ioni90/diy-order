@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'orders#index'
   resources :orders do
     resources :bids
-    resource :closure
+    resource :closure do
+      get 'addresses', to: 'closures#new_address'
+      post 'addresses', to: 'closures#create_address'
+    end
   end
 
 end

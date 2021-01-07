@@ -76,15 +76,15 @@
 
 ## addresses テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| name        | string     | null: false                    |
-| postal_code | string     | null: false                    |
-| prefecture  | integer    | null: false                    |
-| location    | string     | null: false                    |
-| building    | string     |                                |
-| phone       | string     | null: false                    |
-| closure_id  | references | foreign_key: true, null: false |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| name           | string     | null: false                    |
+| postal_code    | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| location       | string     | null: false                    |
+| building       | string     |                                |
+| phone          | string     | null: false                    |
+| closure_id     | references | foreign_key: true              |
 
 ### Association
 

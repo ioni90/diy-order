@@ -139,7 +139,11 @@
         <div>
           オファー価格：<br>
           <div class="offer-price-display">
+          <% if @bid.offer_price %>
             <%= @bid.offer_price.to_s(:delimited) %> 円
+          <% else %>
+            無し
+          <% end %>
           </div>
           <div class="reply-from-diyer">
             <%= @bid.price_remark %>
@@ -167,3 +171,4 @@
   <% end %>
 </div>
 
+<%= render "shared/footer" %>

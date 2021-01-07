@@ -42,17 +42,16 @@
 </header>
 
 <div class="wrapper">
-  <div>
     <%= link_to(new_order_path, class:'remove-under-line') do %>
       <div class="order-side">
-        <div class="order-desc">家具制作依頼</div>
+        <div class="order-desc">DIY家具屋さんを使うと、<br>どこかの誰かがあなたの家具を作ってくれます。<br>オーダーするために画像をクリックしてください。</div>
       </div>
     <% end %>
-  </div>
 </div>
 <%# オーダー一覧表示部分 %>
 <div>
   <h2 class="furniture-index-list">DIYできる家具一覧</h2>
+  <h3 class="furniture-index-select">あなたがDIYしたい家具を下から選んでください。</h3>
   <ul class='orders-list'>
     <% @orders.each do |order| %>
       <li class='order-alone'>
@@ -76,3 +75,5 @@
   </ul>
 
 </div>
+
+<%= render "shared/footer" %>

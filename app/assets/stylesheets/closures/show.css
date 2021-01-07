@@ -1,0 +1,36 @@
+.visibiliry-hidden {
+  display: none;
+}
+
+.count-box {
+  margin: 30px auto 100px auto;
+  padding: 20px;
+  background-color: #e5eb92;
+  width: 500px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.count-result {
+  color: rgb(252, 112, 112);
+}
+
+.closed-contents {
+  background-color: #f8d7dc;
+  border: solid 2px rgb(250, 171, 212);
+  border-radius: 8px;
+  width: 500px;
+  height: auto;
+  margin: 30px auto 30px auto;
+  padding: 20px;
+}
+
+.closed-text {
+  width: 450px;
+  
+  margin: 30px auto 30px auto;
+  text-align: center;
+  background-color: indianred;
+  border-radius: 10px;
+  color: aliceblue;
+}
