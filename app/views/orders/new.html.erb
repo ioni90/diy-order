@@ -69,7 +69,7 @@
           <%= f.text_field :price, class:"price-input", placeholder:"例）20,000" %>
         </div>
     <div class="order-btn-contents">
-      <%= f.submit "オーダー" ,class:"order-btn" %>
+      <%= f.submit "オーダー", data: { confirm: "家具をオーダーしてもよろしいですか？" }, class:"order-btn" %>
       <%=link_to 'Topへ', root_path, class:"back-btn" %>
     </div>
   </div>
