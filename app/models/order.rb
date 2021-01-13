@@ -14,8 +14,6 @@ class Order < ApplicationRecord
                                       greater_than: 299, less_than: 300001 }
   end
 
-  with_options numericality: { other_than: 1 } do
-    validates :type_id
-    validates :delivery_time_id
-  end
+    validates :type_id, numericality: { other_than: 1, message: "が選択されていません" }
+    validates :delivery_time_id, numericality: { other_than: 1, message: "が選択されていません" }
 end
