@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      bid:
+        message: クライアント様へのメッセージ
+        delivery_time_remark: 制作日数への返信
+        size_remark: サイズへの返信
+        material_remark: 材質への返信
+        detail_remark: 詳細への返信
+        price_remark: 希望価格への返信
+        offer_price: オファー価格
+      order:
+        name: 家具の名前
+        story: 家具発注目的
+        size: 家具のサイズ
+        price: 支払い価格
+        type_id: 家具のタイプ
+        delivery_time_id: 制作希望日数
+       
