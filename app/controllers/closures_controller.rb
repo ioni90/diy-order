@@ -32,7 +32,6 @@ class ClosuresController < ApplicationController
   def show
     @order = Order.find(params[:order_id])
     @closure = Closure.find_by(order_id: @order.id)
-    
     @bid = Bid.find(params[:format])
   end
 
