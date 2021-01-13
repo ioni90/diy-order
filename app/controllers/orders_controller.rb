@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit]
 
   def index
-    @orders = Order.all.order(id: "DESC")
+    @orders = Order.all.order(id: "DESC").limit(6)
     @bids = Bid.all
     @closures = Closure.all
   end
