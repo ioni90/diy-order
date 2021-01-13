@@ -58,16 +58,22 @@
       </div>
       <% else %>
         <% unless user_signed_in? && @order.bids.exists?(user_id: current_user.id) %>
-          
-          <%= link_to '入札画面に進む', new_order_bid_path(@order.id), class:"bid-btn" %>
-         
+          <div>
+            <%= link_to '入札画面に進む', new_order_bid_path(@order.id), class:"to-bid-btn" %>
+          </div>
         <% else %>
           <div><span class="bid-already">あなたはこの家具をすでに入札しています</span></div>
         <% end %>
       <% end %>
     <% else %>
-            <div><span class="bid-already">この家具はすでに入札されています</span></div>
+      <div>
+        <span class="bid-already">この家具はすでに入札されています</span>
+      </div>
     <% end %>
+
+    <div class="show-back-btn-contents">
+      <%=link_to 'Topへ', root_path, class:"show-back-btn" %>
+    </div>
   
   </div>
 </div>

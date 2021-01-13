@@ -8,7 +8,6 @@
       <%# ログインの有無で表示が分岐%>
       <% if user_signed_in? %>
         <li><%= link_to "#{current_user.nickname} さんのマイページ", '#', class: "user-nickname" %></li>
-        <li><%= link_to "注文履歴", '#', class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
@@ -23,7 +22,7 @@
           <% unless @closures.exists?(order_id: bid.order_id)%>
           <li>
             <%= link_to image_tag("19.png", width: '30'), order_bid_path(bid.order_id, bid.id)%>
-            <%= bid.user.nickname %>
+            <%= "#{bid.user.nickname}さんに入札されています。プレゼントマークをクリック！" %>
           </li>
           <% else %>
             <div>

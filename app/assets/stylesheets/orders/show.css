@@ -78,3 +78,31 @@
   margin: 20px 0px;
   padding: 2vh 50px;
 }
+
+.show-back-btn-contents {
+  margin: 30px 0 5% 0;
+}
+
+.show-back-btn {
+  background: #ebe0df;
+  border: 1px solid #e08681;
+  color: rgb(134, 119, 119);
+  padding: 15px 150px;
+  height: 50px;
+  font-size: 14px;
+  margin-bottom: 4vh;
+  margin-left: 50px;
+  text-decoration: none;
+}
+
+.to-bid-btn {
+  background: #e08681;
+  border: 1px solid #e08681;
+  color: rgb(249, 249, 249);
+  padding: 15px 120px;
+  height: 50px;
+  font-size: 14px;
+  margin-bottom: 4vh;
+  margin-left: 50px;
+  text-decoration: none;
+}
