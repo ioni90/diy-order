@@ -13,4 +13,6 @@ class Bid < ApplicationRecord
     validates :price_remark
   end
 
+  validates :offer_price, allow_blank: true, numericality: { only_integer: true, message:"に半角数字が使用されていません" }
+
 end

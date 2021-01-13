@@ -9,6 +9,8 @@
 　<div class="orders-main">
   <h2>自分でDIYできる条件を入力</h2>
   <%= form_with model: @bid, url: order_bids_path, local: true do |f| %>
+  <%= render partial: 'shared/error_messages', locals: { model: f.object } %>
+
   <div>
     <table width="100%" height="300">
       <tbody>
@@ -47,7 +49,8 @@
           <%= f.radio_button :size_ok, :false, class:"remove-input-mark" %>
           <%= f.label :size_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
-        <div class="suggestion">
+        <div class="suggestion">サイズへの返信
+          <span class="indispensable">必須</span>
           <%= f.text_area :size_remark, class:"suggestion", placeholder:"(100文字まで) 例)テーブルの天板をカットせずにそのままのサイズを使用すれば希望価格に近い金額になるかと思います。", maxlength:"100" %>
         </div>
       </div>
@@ -67,7 +70,8 @@
           <%= f.radio_button :material_ok, :false, class:"remove-input-mark" %>
           <%= f.label :material_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
-        <div class="suggestion">
+        <div class="suggestion">材質への返信
+          <span class="indispensable">必須</span>
           <%= f.text_area :material_remark, class:"suggestion", placeholder:"(100文字まで) 例)天板は鉄、その他はパイン材を使用します。", maxlength:"100" %>
         </div>
       </div>
@@ -87,7 +91,8 @@
           <%= f.radio_button :detail_ok, :false, class:"remove-input-mark" %>
           <%= f.label :detail_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
-        <div class="suggestion">
+        <div class="suggestion">詳細への返信
+          <span class="indispensable">必須</span>
           <%= f.text_area :detail_remark, class:"suggestion", placeholder:"(100文字まで) 例)詳細承知しました！細かいところこちらでいい感じに進めます。", maxlength:"100" %>
         </div>
       </div>
@@ -107,7 +112,8 @@
           <%= f.radio_button :delivery_ok, :false, class:"remove-input-mark" %>
           <%= f.label :delivery_ok_false, "ご提案があります！", class:"label-motion" %>
         </div>
-        <div class="suggestion">
+        <div class="suggestion">制作日数への返信
+          <span class="indispensable">必須</span>
           <%= f.text_area :delivery_time_remark, class:"suggestion", placeholder:"(100文字まで) 例)制作までに3週間程度いただければと思います。", maxlength:"100" %>
         </div>
       </div>
@@ -130,11 +136,14 @@
         <div class="suggestion">
           <span class="optional">任意</span>
           オファー価格：<br>
-          <%= f.text_field :offer_price, class:"offer-price-input", placeholder:"例）15,000" %> 円
+          <%= f.text_field :offer_price, class:"offer-price-input", placeholder:"例）15,000" %> 円<br>
+          価格への返信
+          <span class="indispensable">必須</span>
           <%= f.text_area :price_remark, class:"suggestion", placeholder:"(100文字まで) 例)材料費だけで1万円近くになってしまいますので、上記の価格でいかがでしょうか？", maxlength:"100" %>
         </div>
       </div>
-      <div class="message-area">クライアント様へメッセージ
+      <div class="message-area">
+        <span class="indispensable">必須</span><br>クライアント様へメッセージ
         <%= f.text_area :message, class:"message-box", placeholder:"(100文字まで) 例)頑張りますので承諾いただけると嬉しいです。", maxlength:"100" %>
       </div>
       

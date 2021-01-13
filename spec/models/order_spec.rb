@@ -20,37 +20,37 @@ RSpec.describe User, type: :model do
     it '家具の名前が空だと登録できない' do
       @order.name = nil
       @order.valid?
-      expect(@order.errors.full_messages).to include("Name can't be blank")
+      expect(@order.errors.full_messages).to include("家具の名前を入力してください")
     end
     it '発注目的が空だと登録できない' do
       @order.story = nil
       @order.valid?
-      expect(@order.errors.full_messages).to include("Story can't be blank")
+      expect(@order.errors.full_messages).to include("家具発注目的を入力してください")
     end
     it '家具のタイプが"--"だと登録できない' do
       @order.type_id = 1
       @order.valid?
-      expect(@order.errors.full_messages).to include("Type must be other than 1")
+      expect(@order.errors.full_messages).to include("家具のタイプが選択されていません")
     end
     it '家具サイズが空だと登録できない' do
       @order.size = nil
       @order.valid?
-      expect(@order.errors.full_messages).to include("Size can't be blank")
+      expect(@order.errors.full_messages).to include("家具のサイズを入力してください")
     end
     it '制作希望日が"--"だと登録できない' do
       @order.delivery_time_id = 1
       @order.valid?
-      expect(@order.errors.full_messages).to include("Delivery time must be other than 1")
+      expect(@order.errors.full_messages).to include("制作希望日数が選択されていません")
     end
     it '家具の価格が空だと登録できない' do
       @order.price = nil
       @order.valid?
-      expect(@order.errors.full_messages).to include("Price can't be blank")
+      expect(@order.errors.full_messages).to include("支払い価格を入力してください", "支払い価格は数値で入力してください")
     end
     it 'ユーザーが紐付いていないと家具情報は保存できない' do
       @order.user = nil
       @order.valid?
-      expect(@order.errors.full_messages).to include('User must exist')
+      expect(@order.errors.full_messages).to include('Userを入力してください')
     end
   end
 end

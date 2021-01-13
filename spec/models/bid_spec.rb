@@ -17,32 +17,32 @@ RSpec.describe Bid, type: :model do
     it 'サイズのコメントが空だと登録できない' do
       @bid.size_remark = ""
       @bid.valid?
-      expect(@bid.errors.full_messages).to include("Size remark can't be blank")
+      expect(@bid.errors.full_messages).to include("サイズへの返信を入力してください")
     end
     it '材質のコメントが空だと登録できない' do
       @bid.material_remark = nil
       @bid.valid?
-      expect(@bid.errors.full_messages).to include("Material remark can't be blank")
+      expect(@bid.errors.full_messages).to include("材質への返信を入力してください")
     end
     it '詳細のコメントが空だと登録できない' do
       @bid.detail_remark = nil
       @bid.valid?
-      expect(@bid.errors.full_messages).to include("Detail remark can't be blank")
+      expect(@bid.errors.full_messages).to include("詳細への返信を入力してください")
     end
     it '希望制作日数のコメントが空だと登録できない' do
       @bid.delivery_time_remark = nil
       @bid.valid?
-      expect(@bid.errors.full_messages).to include("Delivery time remark can't be blank")
+      expect(@bid.errors.full_messages).to include("制作日数への返信を入力してください")
     end
     it '希望制作価格のコメントが空だと登録できない' do
       @bid.price_remark = nil
       @bid.valid?
-      expect(@bid.errors.full_messages).to include("Price remark can't be blank")
+      expect(@bid.errors.full_messages).to include("希望価格への返信を入力してください")
     end
     it 'メッセージが空だと登録できない' do
       @bid.message = nil
       @bid.valid?
-      expect(@bid.errors.full_messages).to include("Message can't be blank")
+      expect(@bid.errors.full_messages).to include("クライアント様へのメッセージを入力してください")
     end
   end
 end

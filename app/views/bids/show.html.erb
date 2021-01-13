@@ -8,7 +8,7 @@
   </h2>
 
 
-　<div class="orders-main">
+  <div class="orders-main">
     <table width="100%" height="300">
       <tbody>
         <tr>
@@ -158,16 +158,16 @@
 </div>
 
 <div class="closure-wrapper">
-  <h2 class="agree-sentence">下の同意ボタンを押すとDIYされます</h2>
+  <h2 class="agree-sentence">下の同意ボタンを押すとDIYされます</h2><br>
+  <span class="indispensable">メッセージ必須</span>
   <%= form_with model: @closure, url: order_closure_path, local: true do |f| %>
-
-  <div>
-    <%= f.text_area :reply, class:"closure-long-reply", placeholder:"(500文字まで) 例)よろしくお願いします", rows:"5",maxlength:"500" %>
-  </div>
-  <%= f.hidden_field :bid_id, value: @bid.id %>
-  <div class="closure-btn-cotents">
-    <%= f.submit "以上の条件で同意します", class:"closure-btn" %>
-  </div>
+    <div>
+      <%= f.text_area :reply, class:"closure-long-reply", placeholder:"(500文字まで) 例)よろしくお願いします", rows:"5",maxlength:"500" %>
+    </div>
+      <%= f.hidden_field :bid_id, value: @bid.id %>
+    <div class="closure-btn-cotents">
+      <%= f.submit "以上の条件で同意します", class:"closure-btn" %>
+    </div>
   <% end %>
 </div>
 
